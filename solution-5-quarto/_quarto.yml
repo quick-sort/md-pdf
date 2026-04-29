@@ -1,0 +1,22 @@
+project:
+  type: default
+
+format:
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    pdf-engine: xelatex
+    geometry:
+      - top=25mm
+      - bottom=30mm
+      - left=20mm
+      - right=20mm
+    mainfont: "DejaVu Sans"
+    sansfont: "DejaVu Sans"
+    monofont: "DejaVu Sans Mono"
+    CJKmainfont: "Noto Sans CJK SC"
+    number-sections: true
+    colorlinks: true
+    linkcolor: "2980b9"
+    urlcolor: "2980b9"
+    include-in-header: header.tex

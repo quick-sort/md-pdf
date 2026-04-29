@@ -1,0 +1,158 @@
+% ============================================
+% DM-4000 电机规格说明书 - Pandoc LaTeX 模板
+% 使用 XeLaTeX 编译，支持中文和 SVG
+% ============================================
+\documentclass[a4paper,10pt]{article}
+
+% ---------- 字体 ----------
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+
+% ---------- 中文支持 ----------
+\usepackage{ctex}
+\setCJKmainfont[BoldFont={Noto Sans CJK SC Bold},ItalicFont={Noto Sans CJK SC}]{Noto Sans CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+% ---------- 页面布局 ----------
+\usepackage[top=25mm,bottom=30mm,left=20mm,right=20mm]{geometry}
+
+% ---------- 颜色 ----------
+\usepackage{xcolor}
+\definecolor{primary}{HTML}{1A5276}
+\definecolor{accent}{HTML}{2980B9}
+\definecolor{textcolor}{HTML}{2C3E50}
+\definecolor{lightbg}{HTML}{F0F4F8}
+\definecolor{coverstart}{HTML}{1A5276}
+\definecolor{covermid}{HTML}{2980B9}
+
+% ---------- 基础包 ----------
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{calc}
+
+% ---------- 全局文字颜色 ----------
+\color{textcolor}
+
+% ---------- 超链接 ----------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=accent,
+  urlcolor=accent,
+  hidelinks
+}
+
+% ---------- 页眉页脚 ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\color{gray}DM-4000 系列三相异步电动机 · 产品规格说明书}
+\fancyhead[R]{\footnotesize\color{gray}SPEC-DM4000-2026-R1}
+\fancyfoot[C]{\footnotesize\color{gray}第 \thepage\ 页}
+\fancyfoot[R]{\scriptsize\color{gray!70}© 2026 德明电机技术有限公司}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- 标题样式 ----------
+\titleformat{\section}
+  {\Large\bfseries\color{primary}}{\thesection.}{0.5em}{}
+  [\vspace{-0.5ex}\textcolor{accent}{\rule{\linewidth}{2pt}}]
+\titleformat{\subsection}
+  {\large\bfseries\color{accent}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{primary}}{\thesubsubsection}{0.5em}{}
+
+% ---------- 引用块样式 ----------
+\newtcolorbox{warningbox}{
+  colback=red!3,
+  colframe=red!60,
+  leftrule=3pt,
+  rightrule=0pt,
+  toprule=0pt,
+  bottomrule=0pt,
+  boxsep=2mm,
+  left=2mm
+}
+
+% ---------- 表格行颜色 ----------
+\usepackage{colortbl}
+\newcommand{\rowalt}{\rowcolor{lightbg}}
+
+% ---------- 列表间距 ----------
+\setlist{nosep,leftmargin=6mm}
+
+% ---------- 段落 ----------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5\baselineskip}
+
+% ---------- Pandoc 兼容 ----------
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+% Pandoc 使用 CSLReferences 环境
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{CSLReferences}[2]{}{}
+$endif$
+
+% ---------- 元数据 ----------
+$if(title)$\title{$title$}$endif$
+$if(author)$\author{$author$}$endif$
+$if(date)$\date{$date$}$endif$
+
+\begin{document}
+
+% ========== 封面页 ==========
+\thispagestyle{empty}
+\begin{titlepage}
+\newgeometry{margin=0pt}
+\noindent
+\colorbox{primary}{%
+  \begin{minipage}[c][\paperheight][c]{\paperwidth}
+    \centering\color{white}
+    \vspace*{60mm}
+
+    {\fontsize{36pt}{42pt}\selectfont\bfseries DM-4000 系列\par}
+    \vspace{8mm}
+    {\fontsize{20pt}{26pt}\selectfont\color{white!80} 三相异步电动机\par}
+    \vspace{15mm}
+    {\fontsize{16pt}{22pt}\selectfont\color{white!70} 产品规格说明书\par}
+
+    \vspace{20mm}
+    {\color{white!30}\rule{0.6\paperwidth}{0.5pt}\par}
+    \vspace{15mm}
+
+    {\normalsize
+      \textbf{文件编号：} SPEC-DM4000-2026-R1\par\vspace{2mm}
+      \textbf{版本：} V2.1\par\vspace{2mm}
+      \textbf{日期：} 2026年4月\par\vspace{2mm}
+      \textbf{编制：} 德明电机技术有限公司\par
+    }
+
+    \vfill
+    {\scriptsize\color{white!50}
+      本文件包含德明电机技术有限公司的专有信息。未经书面许可，不得复制或分发。\par
+    }
+    \vspace{15mm}
+  \end{minipage}%
+}
+\restoregeometry
+\end{titlepage}
+
+% ========== 正文 ==========
+$body$
+
+\end{document}

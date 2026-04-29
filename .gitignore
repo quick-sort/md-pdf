@@ -1,0 +1,18 @@
+# PDF output
+output/*.pdf
+
+# Node.js
+node_modules/
+
+# LaTeX temp files
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Quarto
+.quarto/
+*_files/

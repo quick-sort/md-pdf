@@ -1,0 +1,238 @@
+/* ============================================
+   DM-4000 电机规格说明书 - WeasyPrint 样式
+   使用 CSS Paged Media (@page) 控制 PDF 排版
+   ============================================ */
+
+/* ---------- 字体与基础 ---------- */
+
+:root {
+  --primary: #1a5276;
+  --accent: #2980b9;
+  --text: #2c3e50;
+  --light-bg: #f0f4f8;
+  --border: #bdc3c7;
+}
+
+body {
+  font-family: 'Noto Sans CJK SC', 'Source Han Sans SC', 'WenQuanYi Micro Hei', sans-serif;
+  font-size: 10pt;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ---------- 页面设置 ---------- */
+@page {
+  size: A4;
+  margin: 25mm 20mm 30mm 20mm;
+
+  @top-left {
+    content: "DM-4000 系列三相异步电动机 · 产品规格说明书";
+    font-size: 7.5pt;
+    color: #777;
+    border-bottom: 0.5pt solid #ccc;
+    padding-bottom: 3mm;
+  }
+  @top-right {
+    content: "SPEC-DM4000-2026-R1";
+    font-size: 7.5pt;
+    color: #777;
+    border-bottom: 0.5pt solid #ccc;
+    padding-bottom: 3mm;
+  }
+  @bottom-center {
+    content: "第 " counter(page) " 页 / 共 " counter(pages) " 页";
+    font-size: 8pt;
+    color: #999;
+  }
+  @bottom-right {
+    content: "© 2026 德明电机技术有限公司";
+    font-size: 7pt;
+    color: #aaa;
+  }
+}
+
+/* 首页（封面）无页眉页脚 */
+@page :first {
+  margin: 0;
+  @top-left { content: none; border: none; }
+  @top-right { content: none; border: none; }
+  @bottom-center { content: none; }
+  @bottom-right { content: none; }
+}
+
+/* ---------- 封面 ---------- */
+.cover-page {
+  page-break-after: always;
+  width: 210mm;
+  height: 297mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(160deg, #1a5276 0%, #2980b9 50%, #1a5276 100%);
+  color: white;
+  padding: 40mm 25mm;
+  box-sizing: border-box;
+}
+
+.cover-page h1 {
+  font-size: 36pt;
+  font-weight: 700;
+  margin-bottom: 5mm;
+  letter-spacing: 4pt;
+  border: none;
+  color: white;
+}
+
+.cover-page h2 {
+  font-size: 20pt;
+  font-weight: 400;
+  margin-bottom: 15mm;
+  color: #d4e6f1;
+  border: none;
+}
+
+.cover-page h3 {
+  font-size: 16pt;
+  font-weight: 400;
+  margin-bottom: 20mm;
+  color: #aed6f1;
+  border: none;
+}
+
+.cover-page p {
+  font-size: 11pt;
+  margin: 2mm 0;
+  color: #d5e8f0;
+}
+
+.cover-page strong {
+  color: white;
+}
+
+.cover-page hr {
+  width: 60%;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  margin: 15mm auto;
+}
+
+.cover-page em {
+  font-size: 8.5pt;
+  color: rgba(255,255,255,0.6);
+}
+
+/* ---------- 标题 ---------- */
+h1, h2, h3, h4 {
+  color: var(--primary);
+  page-break-after: avoid;
+}
+
+h2 {
+  font-size: 16pt;
+  border-bottom: 2pt solid var(--accent);
+  padding-bottom: 3mm;
+  margin-top: 10mm;
+}
+
+h3 {
+  font-size: 12pt;
+  margin-top: 6mm;
+  color: var(--accent);
+}
+
+/* ---------- 表格 ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4mm 0 6mm;
+  font-size: 9pt;
+  page-break-inside: avoid;
+}
+
+th {
+  background: var(--primary);
+  color: white;
+  padding: 2.5mm 3mm;
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: 2mm 3mm;
+  border-bottom: 0.5pt solid #ddd;
+}
+
+tr:nth-child(even) td {
+  background: var(--light-bg);
+}
+
+/* ---------- 图片 ---------- */
+img {
+  max-width: 100%;
+  display: block;
+  margin: 4mm auto;
+}
+
+p:has(> img) + p > em,
+p > em:only-child {
+  display: block;
+  text-align: center;
+  font-size: 8.5pt;
+  color: #777;
+  margin-top: 1mm;
+}
+
+/* ---------- 代码块 ---------- */
+pre {
+  background: #f5f5f5;
+  border: 0.5pt solid #ddd;
+  border-left: 3pt solid var(--accent);
+  padding: 3mm 4mm;
+  font-size: 8.5pt;
+  line-height: 1.5;
+  page-break-inside: avoid;
+  overflow-x: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 9pt;
+}
+
+/* ---------- 引用块 ---------- */
+blockquote {
+  border-left: 3pt solid #e74c3c;
+  background: #fdf2f2;
+  padding: 3mm 4mm;
+  margin: 4mm 0;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+}
+
+blockquote strong {
+  color: #c0392b;
+}
+
+/* ---------- 列表 ---------- */
+ul, ol {
+  padding-left: 6mm;
+}
+
+li {
+  margin-bottom: 1.5mm;
+}
+
+/* ---------- 分隔线 ---------- */
+hr {
+  border: none;
+  border-top: 1pt solid #ddd;
+  margin: 6mm 0;
+}
+
+/* ---------- 链接 ---------- */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
