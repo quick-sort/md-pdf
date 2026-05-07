@@ -1,5 +1,4 @@
 # PDF output
-output/*.pdf
 
 # Node.js
 node_modules/
